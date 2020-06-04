@@ -1,0 +1,40 @@
+﻿@page
+@model WhatsUpload.FE.Pages.tempModel
+@{
+    ViewData["Title"] = "temp";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div class="text-center">
+    <h2>Your Files:</h2>
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table m-0">
+                <thead>
+                    <tr>
+                        <th>a File Name</th>
+                        <th>b Description</th>
+                        <th>c Date Added</th>
+                        <th>d Action</th>
+                        <th>e Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var track in Model.TracksList)
+                    {
+                        <tr>
+                            <td>@track.TrackId</td>
+                            <td>@track.Name</td>
+                            <td>@track.Composer</td>
+                            <td></td>
+                            <td>@track.TimePlayed</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!-- /.table-responsive -->
+    </div>
+    <!-- /.card-body -->
+</div>
+

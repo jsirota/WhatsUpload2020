@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhatsUpload.API", "WhatsUpload.API\WhatsUpload.API.csproj", "{C3114990-2405-42F9-BB14-2700512A0DE5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhatsUpload.Core", "WhatsUpload.Core\WhatsUpload.Core.csproj", "{E95972D3-E1D5-4F2E-BD24-EDE82A172440}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhatsUpload.Data", "WhatsUpload.Data\WhatsUpload.Data.csproj", "{3E5E7FC0-29EE-4638-92AF-4C21C6CDB7A0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhatsUpload.Tests", "WhatsUpload.Tests\WhatsUpload.Tests.csproj", "{417CF1EA-39FF-4EF3-95AC-34346645A134}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhatsUpdate.UI", "WhatsUpdate.UI\WhatsUpdate.UI.csproj", "{ACF1D9A0-CAE9-4CCE-8FF7-639F2BE01C93}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhatsUpload.RazorPages", "WhatsUpload.FE\WhatsUpload.RazorPages.csproj", "{6A8834D0-12A1-4B3F-A6EB-EE540EA63925}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C3114990-2405-42F9-BB14-2700512A0DE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3114990-2405-42F9-BB14-2700512A0DE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3114990-2405-42F9-BB14-2700512A0DE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3114990-2405-42F9-BB14-2700512A0DE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E95972D3-E1D5-4F2E-BD24-EDE82A172440}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E95972D3-E1D5-4F2E-BD24-EDE82A172440}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E95972D3-E1D5-4F2E-BD24-EDE82A172440}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E95972D3-E1D5-4F2E-BD24-EDE82A172440}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E5E7FC0-29EE-4638-92AF-4C21C6CDB7A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E5E7FC0-29EE-4638-92AF-4C21C6CDB7A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E5E7FC0-29EE-4638-92AF-4C21C6CDB7A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E5E7FC0-29EE-4638-92AF-4C21C6CDB7A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{417CF1EA-39FF-4EF3-95AC-34346645A134}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{417CF1EA-39FF-4EF3-95AC-34346645A134}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{417CF1EA-39FF-4EF3-95AC-34346645A134}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{417CF1EA-39FF-4EF3-95AC-34346645A134}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACF1D9A0-CAE9-4CCE-8FF7-639F2BE01C93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACF1D9A0-CAE9-4CCE-8FF7-639F2BE01C93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACF1D9A0-CAE9-4CCE-8FF7-639F2BE01C93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACF1D9A0-CAE9-4CCE-8FF7-639F2BE01C93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A8834D0-12A1-4B3F-A6EB-EE540EA63925}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A8834D0-12A1-4B3F-A6EB-EE540EA63925}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A8834D0-12A1-4B3F-A6EB-EE540EA63925}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A8834D0-12A1-4B3F-A6EB-EE540EA63925}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3A5642E5-8B54-4E9B-A519-D3CE4052689F}
+	EndGlobalSection
+EndGlobal

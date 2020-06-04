@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>WhatsUpload - Upload Song</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/site.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="css/bootstrap.css" rel="stylesheet" />
+</head>
+
+<body style="background-image: url('img/background.jpg');">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">
+                    <img src="img/wu3.png" />
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+
+            <form method="post" enctype="multipart/form-data" id="fileUploadForm">
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">File:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control custom-file-input" type="file" name="file" id="file" />
+                        <label class="custom-file-label">MP3 from your computer...</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    Song Name:
+                    <input class="form-control" id="txtSongName" />
+                </div>
+                <div class="form-group">
+                    Description:
+                    <input class="form-control" id="txtDescription" />
+                </div>
+                <div class="form-group">
+                    <input type="button" id="btnSubmit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+            <a href="Index.html">Back to My Songs</a>
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2020 - WhatsUpload.FE - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script language="javascript">
+
+
+    $("#btnSubmit").click(function (event) {
+        //stop submit the form, we will post it manually.
+        event.preventDefault();
+
+        // Get form
+        var form = $('#fileUploadForm')[0];
+
+		// Create an FormData object
+        var data = new FormData(form);
+
+		// If you want to add an extra field for the FormData
+        data.append("FileName", document.getElementById("file").value);
+        data.append("Name", document.getElementById("txtSongName").value);
+        data.append("Description", document.getElementById("txtDescription").value);
+
+		// disabled the submit button
+        $("#btnSubmit").prop("disabled", true);
+
+        $.ajax({
+            type: "POST",
+            enctype: 'multipart/form-data',
+            url:'https://localhost:44389/api/uploads/',
+            data: data,
+            processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
+            success: function (data) {
+
+                $("#result").text(data);
+                console.log("SUCCESS : ", data);
+                $("#btnSubmit").prop("disabled", false);
+
+            },
+            error: function (e) {
+
+                $("#result").text(e.responseText);
+                console.log("ERROR : ", e);
+                $("#btnSubmit").prop("disabled", false);
+
+            }
+        });
+
+    });
+
+        
+        function createDocument()
+        { 
+            $.ajax({
+                url:'https://localhost:44389/api/uploads/',
+                data:JSON.stringify({
+                "FileName" :document.getElementById("file").value,
+                "Name":document.getElementById("txtSongName").value, 
+                "Description":document.getElementById("txtDescription").value ,
+                }),
+                type:'post',
+                headers: {                    
+                    'Content-Type': 'application/json'
+                },
+                success:function(){
+                    window.location.replace("Index.html");
+                },
+                error:function(html,status,error){
+                    console.log('the request is '+error);
+                }
+            });
+        }
+
+
+        $(document).ready(function () {
+            $(".custom-file-input").on("change", function () {
+                var fileName = $(this).val().split("\\").pop();
+            $(this).next(".custom-file-label").html(fileName);
+            })
+        });
+
+
+        $('#file').change(
+        function ()
+        {
+            // Check file type - allow mp3 uploads only
+            var fileExtension = ['mp3'];
+            if ($.inArray($(this).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+                alert("Only '.mp3' format is allowed.");
+                this.value = ''; // Clean field
+                return false;
+            }
+
+            // Check file size - max of 10MB
+            var fileSize = ($(this)[0].files[0].size / 1024 / 1024); //size in MB
+            if (fileSize > 10) {
+                alert("Maximum file size is 10MB.  Please upload a smaller file");
+            }
+
+        });
+
+    </script>
+</body>
+</html>

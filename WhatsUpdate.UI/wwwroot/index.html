@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>WhatsUpload - Home</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/site.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet" />
+
+</head>
+
+<body style="background-image: url('img/background.jpg');">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">
+                    <img src="img/wu3.png" />
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <div id="uploads" style="display:contents">
+                <h1>My Songs</h1>
+                <p>
+                    <a href="/create.html">Upload New Song</a>
+                </p>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>File Name</th>
+                            <th>Song Name</th>
+                            <th>Description</th>
+                            <th>Date Added</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2020 - WhatsUpload.FE - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script language="javascript">
+        $(document).ready(function () {
+            loadDocuments();
+        });
+
+
+        function loadDocuments() {
+            $.ajax({
+                type: "get",
+                url: "https://localhost:44389/api/uploads",
+                contentType: "application/json;",
+                success: function (response) {
+                    var obj = JSON.parse(JSON.stringify(response));
+
+                    $(response).each(function (index, item) {
+                        $('#uploads tbody').append(
+                            '<tr><td>' + item.fileName +
+                            '</td><td>' + item.name +
+                            '</td><td>' + item.description +
+                            '</td><td>' + item.dateAdded.substring(0, 10) +
+                            '</td><td><a onclick="downloadFile(\'' + item.filePath + '\')"  class="btn btn-outline-primary">Download</a> <a onclick="deleteDocument(' + item.fileID + ');"  class="btn btn-outline-danger">Delete</a>' +
+                            '</td></tr>'
+                        )
+                    });
+                }
+            });
+        }
+
+
+
+        function getDocument(docID) {
+            var settings = {
+                "url": "https://localhost:44389/api/uploads/" + docID,
+                "method": "GET"
+            };
+
+            $.ajax(settings).done(function (response) {
+                alert(response);
+            });
+        }
+
+        function createDocument() {
+            alert('post to create');
+            var settings = {
+                "url": "https://localhost:44389/api/uploads",
+                "method": "POST"
+            };
+
+            $.ajax(settings).done(function (response) {
+                alert(response);
+            });
+        }
+
+        function updateDocument() {
+            var settings = {
+                "url": "https://localhost:44389/api/uploads",
+                "method": "PUT"
+            };
+
+            $.ajax(settings).done(function (response) {
+                alert(response);
+            });
+        }
+
+        function deleteDocument(docID) {
+            if (!confirm("Do you want to delete")){
+              return false;
+            }
+
+            var settings = {
+                "url": "https://localhost:44389/api/uploads/" + docID,
+                "method": "DELETE"
+            };
+
+            $.ajax(settings).done(function (response) {
+                location.reload();
+            });
+        }
+
+
+        function downloadFile(filename) {
+            alert(filename);
+            var settings = {
+                "url": "https://localhost:44389/api/download/" + filename,
+                "method": "POST"
+            };
+
+            $.ajax(settings).done(function (response) {
+                alert('finallly');
+            });
+        }
+
+    </script>
+</body>
+</html>

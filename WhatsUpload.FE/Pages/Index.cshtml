@@ -1,0 +1,60 @@
+﻿@page
+@model WhatsUpload.FE.Pages.IndexModel
+
+@{
+    ViewData["Title"] = "My Uploads";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>My Songs</h1>
+
+<p>
+    <a asp-page="Create">Upload New Song</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Upload[0].FileName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Upload[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Upload[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Upload[0].DateAdded)
+            </th>
+            <th>
+                Actions
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Upload) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FileName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateAdded)
+            </td>
+            <td>
+                <form asp-page-handler="download" method="post">
+                    <button class="btn btn-outline-primary">Download</button> |
+                    <a asp-page="./Edit" asp-route-id="@item.FileID" class="btn btn-outline-primary">Edit</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.FileID" class="btn btn-outline-danger">Delete</a>
+                </form>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
