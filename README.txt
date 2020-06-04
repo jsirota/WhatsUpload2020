@@ -6,6 +6,7 @@ The other 5 projects encompas a multi-tiered project architecture with separated
 These projects are incomplete, not quite functional yet, and need the following:
 - Remove code from upload and download controllers, put in Core Service layer
 - Move EF Migrations to Data project
+- Write Tests in Test project
 
 
 To run either application, you'll need 1 database table; create script here:
@@ -33,3 +34,9 @@ CREATE TABLE [dbo].[Upload](
 ) ON [PRIMARY]
 GO
 
+
+==========================
+Future Considerations
+- Host on cloud; store uploads in cloud storage (S3, blob)
+- Add user login, authentication
+- Improve UI with drag-n-drop file uploading
