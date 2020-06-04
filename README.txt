@@ -1,6 +1,6 @@
 This solution contains 6 projects.
 
-Project WhatsUpload.RazorPages, is a complete, functioning, self-contained project.
+Project WhatsUpload.FE, is a complete, functioning, self-contained Razor Pages project.
 
 The other 5 projects encompas a multi-tiered project architecture with separated REST API, Data, Service, UI, and Test projects.
 These projects are incomplete, not quite functional yet, and need the following:
